@@ -1,0 +1,211 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #F4F1EA;
+  --foreground: #2C2417;
+  --card: #FFFDF8;
+  --card-foreground: #2C2417;
+  --popover: #FFFDF8;
+  --popover-foreground: #2C2417;
+  --primary: #2D5A27;
+  --primary-foreground: #FFFDF8;
+  --secondary: #EDE8DD;
+  --secondary-foreground: #2C2417;
+  --muted: #E8E2D6;
+  --muted-foreground: #6B5D4D;
+  --accent: #C4703E;
+  --accent-foreground: #FFFDF8;
+  --destructive: #B44133;
+  --destructive-foreground: #FFFDF8;
+  --border: #D6CFBF;
+  --input: #D6CFBF;
+  --ring: #2D5A27;
+  --radius: 1rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-noto-sans-kr), 'Noto Sans KR', sans-serif;
+  --font-serif: var(--font-noto-serif-kr), 'Noto Serif KR', serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-clay-bg: #F4F1EA;
+  --color-clay-card: #FFFDF8;
+  --color-clay-forest: #2D5A27;
+  --color-clay-forest-light: #3D7A35;
+  --color-clay-terracotta: #C4703E;
+  --color-clay-earth: #8B7355;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Leaf-shaped radius: top-left and bottom-right are sharp (0), others rounded */
+.leaf-radius {
+  border-radius: 4px 1.25rem 4px 1.25rem;
+}
+
+.leaf-radius-lg {
+  border-radius: 4px 1.5rem 4px 1.5rem;
+}
+
+.leaf-radius-sm {
+  border-radius: 3px 1rem 3px 1rem;
+}
+
+/* Claymorphism utility classes */
+.clay-card {
+  background: #FFFDF8;
+  border-radius: 4px 1.25rem 4px 1.25rem;
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.6),
+    4px 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(214, 207, 191, 0.4);
+}
+
+.clay-button {
+  border-radius: 3px 1rem 3px 1rem;
+  box-shadow:
+    inset 1px 1px 3px rgba(255, 255, 255, 0.5),
+    3px 3px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.clay-button:hover {
+  box-shadow:
+    inset 1px 1px 3px rgba(255, 255, 255, 0.5),
+    2px 2px 6px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+.clay-button:active {
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+    1px 1px 3px rgba(0, 0, 0, 0.08);
+  transform: translateY(0px);
+}
+
+.clay-input {
+  border-radius: 3px 0.875rem 3px 0.875rem;
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.05),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(214, 207, 191, 0.5);
+  background: #FFFDF8;
+  transition: all 0.2s ease;
+}
+
+.clay-input:focus {
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.05),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.6),
+    0 0 0 2px rgba(45, 90, 39, 0.2);
+  border-color: #2D5A27;
+}
+
+/* Flip card */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Front: leaf-radius (top-left sharp, top-right round, bottom-right sharp, bottom-left round) */
+.flip-card-front {
+  border-radius: 4px 1.25rem 4px 1.25rem;
+}
+
+/* Back: border-radius is set via inline style in the component
+   because rotateY(180deg) + parent rotateY(180deg) = 360deg (identity),
+   so the back face renders un-mirrored when visible */
+
+/* Glassmorphism navbar */
+.glass-nav {
+  background: rgba(244, 241, 234, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(214, 207, 191, 0.3);
+}
+
+/* Breathing animation for upload zone */
+@keyframes breathe {
+  0%, 100% {
+    border-color: rgba(45, 90, 39, 0.3);
+    box-shadow: 0 0 0 0 rgba(45, 90, 39, 0.1);
+  }
+  50% {
+    border-color: rgba(45, 90, 39, 0.6);
+    box-shadow: 0 0 12px 2px rgba(45, 90, 39, 0.08);
+  }
+}
+
+.breathe-border {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* Typing cursor blink */
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  display: inline;
+  animation: blink-caret 0.8s step-end infinite;
+  color: #2D5A27;
+  font-weight: 300;
+  margin-left: 1px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
