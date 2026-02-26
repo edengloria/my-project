@@ -117,9 +117,9 @@ function StepOne({ visible }: { visible: boolean }) {
             id="category"
             className="clay-input w-full appearance-none px-4 py-3 text-sm text-foreground focus:outline-none"
           >
-            <option value="">부문을 선택해 주세요</option>
-            <option value="poem">시 부문</option>
-            <option value="essay">산문(수필) 부문</option>
+            <option value="">참가 부문을 선택해 주세요</option>
+            <option value="general">일반부문</option>
+            <option value="elementary">초등부문</option>
           </select>
         </div>
         <div>
@@ -169,7 +169,7 @@ function StepTwo({ visible }: { visible: boolean }) {
           <textarea
             id="poem"
             rows={8}
-            placeholder="작품 본문을 입력해 주세요. 시 부문은 50행 이내, 산문 부문은 A4 5매 이내로 작성해 주세요."
+            placeholder="생태동시 본문을 입력해 주세요. (한글 프로그램 HWP/HWPX 파일로도 제출 가능합니다.)"
             className="clay-input w-full resize-none px-4 py-3 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground/60 focus:outline-none"
           />
         </div>
@@ -254,7 +254,7 @@ function StepThree({ visible }: { visible: boolean }) {
             <input
               ref={inputRef}
               type="file"
-              accept=".doc,.docx,.pdf,.hwp"
+              accept=".hwp,.hwpx"
               className="hidden"
               onChange={handleChange}
             />
@@ -286,7 +286,7 @@ function StepThree({ visible }: { visible: boolean }) {
                   파일을 드래그하거나 클릭하여 업로드
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  HWP, DOC, DOCX, PDF (최대 10MB)
+                  HWP, HWPX (한글 프로그램 전용, 최대 10MB)
                 </p>
               </>
             )}
@@ -322,7 +322,7 @@ function StepThree({ visible }: { visible: boolean }) {
               className="mt-0.5 h-5 w-5 rounded-lg accent-clay-forest"
             />
             <span className="text-sm leading-relaxed text-muted-foreground">
-              수상작의 저작권은 국립생태원과 공동 소유되며, 홍보 목적으로 활용될 수 있음에 동의합니다.
+              당선작은 반환하지 않으며, 국립생태원이 수상자로부터 독점적인 이용 허락을 받아 향후 5년간 출판권을 행사할 수 있음에 동의합니다.
             </span>
           </label>
         </div>
@@ -377,7 +377,7 @@ export function ApplicationForm() {
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
               소중한 작품을 보내주셔서 감사합니다.
               <br />
-              심사 결과는 2026년 8월 중 공지될 예정입니다.
+              심사 결과는 2026년 10월 중 공지될 예정입니다.
             </p>
             <button
               onClick={() => {

@@ -245,7 +245,7 @@ export function HeroSection() {
         <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-clay-forest/10 px-4 py-2">
           <span className="h-2 w-2 rounded-full bg-clay-forest" />
           <span className="text-sm font-medium text-clay-forest">
-            2026.03.01 ~ 2026.05.31
+            작품 접수 2026.05 ~ 2026.08
           </span>
         </div>
 
@@ -258,9 +258,9 @@ export function HeroSection() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
-          자연과 생명의 이야기를 시와 산문에 담아주세요.
+          자연과 생명의 이야기를 생태동시에 담아주세요.
           <br className="hidden md:block" />
-          우리 곁의 생태계를 문학으로 기록하는 여정에 함께해 주세요.
+          초등부문·일반부문으로 나뉘어 총 28명, 1,000만 원 시상합니다.
         </p>
 
         {/* Liquid glass blockquote with typing effect */}
