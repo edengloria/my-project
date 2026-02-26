@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
         <div className="flex items-center gap-2.5">
           <Image
-            src="/images/nie-logo.png"
+            src="/my-project/images/nie-logo.png"
             alt="국립생태원 로고"
             width={100}
             height={34}

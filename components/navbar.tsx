@@ -29,7 +29,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
         <a href="#" className="flex items-center gap-2">
           <Image
-            src="/images/nie-logo.png"
+            src="/my-project/images/nie-logo.png"
             alt="국립생태원 로고"
             width={120}
             height={40}
