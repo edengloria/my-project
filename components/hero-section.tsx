@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState, useCallback } from "react"
-import { ArrowDown } from "lucide-react"
 
 /* ---------- Leaf-shaped floating element ---------- */
 
@@ -139,8 +138,8 @@ function LiquidGlassQuote({ visible }: { visible: boolean }) {
     return () => el.removeEventListener("mousemove", handleMove)
   }, [])
 
-  const highlightX = 20 + mouse.x * 60
-  const highlightY = 20 + mouse.y * 60
+  const highlightX = 30 + mouse.x * 40
+  const highlightY = 25 + mouse.y * 50
 
   return (
     <div
@@ -162,52 +161,55 @@ function LiquidGlassQuote({ visible }: { visible: boolean }) {
       >
         {/* Liquid highlight blob */}
         <div
-          className="pointer-events-none absolute rounded-full transition-all duration-500 ease-out"
+          className="pointer-events-none absolute rounded-full transition-all duration-1000 ease-out"
           style={{
-            width: 160,
-            height: 160,
+            width: 130,
+            height: 130,
             left: `${highlightX}%`,
             top: `${highlightY}%`,
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%)",
-            filter: "blur(12px)",
+              "radial-gradient(circle, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 70%)",
+            filter: "blur(16px)",
           }}
         />
         {/* Secondary green refraction blob */}
         <div
-          className="pointer-events-none absolute rounded-full transition-all duration-700 ease-out"
+          className="pointer-events-none absolute rounded-full transition-all duration-1200 ease-out"
           style={{
-            width: 100,
-            height: 100,
+            width: 80,
+            height: 80,
             left: `${100 - highlightX}%`,
             top: `${100 - highlightY}%`,
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(45,90,39,0.15) 0%, rgba(45,90,39,0) 70%)",
-            filter: "blur(10px)",
+              "radial-gradient(circle, rgba(45,90,39,0.10) 0%, rgba(45,90,39,0) 70%)",
+            filter: "blur(12px)",
           }}
         />
 
-        <blockquote className="relative font-serif text-lg leading-loose tracking-wide md:text-xl" style={{ color: "#2C2417" }}>
-          <span className="text-clay-forest/40 text-2xl leading-none" aria-hidden="true">{'"'}</span>
-          <br />
-          <span style={{ color: "#1a4a16" }}>{typedLine1}</span>
-          {typedLine1.length > 0 && typedLine1.length < QUOTE_LINE_1.length && (
-            <span className="typing-cursor" />
-          )}
-          {typedLine1.length === QUOTE_LINE_1.length && <br />}
-          <span>{typedLine2}</span>
-          {typedLine2.length > 0 && !typingDone && (
-            <span className="typing-cursor" />
-          )}
-          {typingDone && (
-            <>
-              <br />
-              <span className="text-clay-forest/40 text-2xl leading-none" aria-hidden="true">{'"'}</span>
-            </>
-          )}
-        </blockquote>
+        {/* Fixed-height container prevents layout shift during typing */}
+        <div className="min-h-[6rem] md:min-h-[5.5rem]">
+          <blockquote className="relative font-serif text-lg leading-loose tracking-wide md:text-xl" style={{ color: "#2C2417" }}>
+            <span className="text-clay-forest/40 text-2xl leading-none" aria-hidden="true">{'"'}</span>
+            <br />
+            <span style={{ color: "#1a4a16" }}>{typedLine1}</span>
+            {typedLine1.length > 0 && typedLine1.length < QUOTE_LINE_1.length && (
+              <span className="typing-cursor" />
+            )}
+            {typedLine1.length === QUOTE_LINE_1.length && <br />}
+            <span>{typedLine2}</span>
+            {typedLine2.length > 0 && !typingDone && (
+              <span className="typing-cursor" />
+            )}
+            {typingDone && (
+              <>
+                <br />
+                <span className="text-clay-forest/40 text-2xl leading-none" aria-hidden="true">{'"'}</span>
+              </>
+            )}
+          </blockquote>
+        </div>
       </div>
     </div>
   )
@@ -286,17 +288,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:bottom-8">
-        <a
-          href="#overview"
-          className="flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-clay-forest"
-          aria-label="아래로 스크롤"
-        >
-          <span className="text-xs font-medium">아래로</span>
-          <ArrowDown className="h-4 w-4 animate-bounce" />
-        </a>
-      </div>
     </section>
   )
 }
